@@ -14,16 +14,24 @@ const displayDate = ()=>{
         let secStr = sec.toString();
         let hrStr  = hour.toString();
 
-        if(secStr.length > 1){
-            timeUI.textContent = `${hrStr} : ${minStr} : ${secStr}`;
-        }else if(minStr.length > 1){
-            timeUI.textContent = `${hrStr} : ${minStr} : ${secStr}`;
-        }else if(hrStr.length > 1){
-            timeUI.textContent = `${hrStr} : ${minStr} : ${secStr}`;
-        }else{
-            timeUI.textContent = `0${hrStr} : 0${minStr} : 0${secStr}`;
-        }
+        let timeSec = secStr
 
+        if(secStr.length > 1){
+            secStr = secStr
+        } else{
+            secStr = '0' + secStr}
+
+        if(minStr.length > 1){
+            minStr = minStr;
+        }else{
+           minStr = '0' + minStr}
+
+        if(hrStr.length > 1){
+            hrStr = hrStr;
+        }else{
+            hrStr = '0' + hrStr}
+
+        timeUI.textContent = `${hrStr} : ${minStr} : ${secStr}`;
 
 
         console.log( minStr.length)
