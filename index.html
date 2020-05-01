@@ -84,6 +84,11 @@
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   firebase.analytics();
+
+  // firebase refrence
+
+  const auth = firebase.auth();
+  const db = firebase.firestore();
 </script>
 <script src="app.js"></script>
 </body>

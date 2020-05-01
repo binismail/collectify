@@ -98,7 +98,6 @@ const displayDate = ()=>{
 
         // console.log(`todays is: ${months[month]}, ${days[day]}, ${year}`)
    }
-
    setInterval(dateInt, 1000)
 }
 displayDate()
