@@ -35,6 +35,51 @@ const displayDate = ()=>{
         // }else{
         //     hrStr = '0' + hrStr}
 
+          // if(secStr.length > 1){
+        //     secStr = secStr
+        // } else{
+        //     secStr = '0' + secStr}
+
+        // if(minStr.length > 1){
+        //     minStr = minStr;
+        // }else{
+        //    minStr = '0' + minStr}
+
+        // if(hrStr.length > 1){
+        //     hrStr = hrStr;
+        // }else{
+        //     hrStr = '0' + hrStr}
+
+          // if(secStr.length > 1){
+        //     secStr = secStr
+        // } else{
+        //     secStr = '0' + secStr}
+
+        // if(minStr.length > 1){
+        //     minStr = minStr;
+        // }else{
+        //    minStr = '0' + minStr}
+
+        // if(hrStr.length > 1){
+        //     hrStr = hrStr;
+        // }else{
+        //     hrStr = '0' + hrStr}
+
+          // if(secStr.length > 1){
+        //     secStr = secStr
+        // } else{
+        //     secStr = '0' + secStr}
+
+        // if(minStr.length > 1){
+        //     minStr = minStr;
+        // }else{
+        //    minStr = '0' + minStr}
+
+        // if(hrStr.length > 1){
+        //     hrStr = hrStr;
+        // }else{
+        //     hrStr = '0' + hrStr}
+
         timeUI.textContent = `${hrStr} : ${minStr} : ${secStr}`;
 
 
