@@ -82,9 +82,6 @@ const displayDate = ()=>{
 
         timeUI.textContent = `${hrStr} : ${minStr} : ${secStr}`;
 
-
-        console.log( minStr.length)
-
         // date
         let day = date.getDay();
         let month = date.getMonth();
@@ -101,3 +98,24 @@ const displayDate = ()=>{
    setInterval(dateInt, 1000)
 }
 displayDate()
+
+const UIDBController = () =>{
+  const getVal = document.querySelector('.input--holder input');
+  const btnAdd = document.querySelector('.btn--container .btn--holder')
+
+  const addValue = ()=>{
+    if(getVal.value != ''){
+    db.collection('task not completed').add(getVal.value).then(()=>{
+      getVal.value = '';
+    })
+
+    db.collection('task not completed').onSnapshot(snapshot => {
+      viweItems();
+    })
+  }}
+
+  btnAdd.addEventListener('click', addValue);
+
+}
+
+UIDBController();

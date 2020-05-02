@@ -18,7 +18,7 @@
                 </div>
                 <div class="input--container">
                     <div class="input--holder">
-                        <input type="text" placeholder="add task..">
+                        <input class="input--value" type="text" placeholder="add task..">
                     </div>
                     <div class="btn--container"> 
                         <a href="#" class="btn btn--holder">Done</a>
@@ -89,6 +89,9 @@
 
   const auth = firebase.auth();
   const db = firebase.firestore();
+
+
+  db.setting({timestampsInSnapshots: true});
 </script>
 <script src="app.js"></script>
 </body>
