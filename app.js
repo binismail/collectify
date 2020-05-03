@@ -102,6 +102,7 @@ displayDate()
 const UIDBController = () =>{
   const getVal = document.querySelector('.input--holder input');
   const btnAdd = document.querySelector('.btn--container .btn--holder')
+  let markDoc = document.querySelector('.item-task--container-un');
 
   const addValue = ()=>{
     if(getVal.value != ''){
@@ -111,44 +112,64 @@ const UIDBController = () =>{
   }}
 
 
+
   db.collection('task not completed').onSnapshot(snapshot => {
-      // const changes = snapshot.docs.changes;
-
       displayItem(snapshot.docs);
-
-      // changes.forEach(change =>{
-      //   if(change.type == 'added'){
-      //     console.log(change.data());
-      //   }
-      // })
   })
 
   const displayItem = (data) =>{
-
-      let html = '';
-
+    let ulContainer = document.querySelector('.item-task--container-un');
       data.map(cur => {
-        let li = ` <li class="list-task--holder" data-id="${cur.id}">
-        <p class="value--holder">${cur.data().list}</p>
-        <div class="btn--holder">
-        <i class="gg-bookmark"></i>
-        <i class="gg-edit-exposure"></i>
-        </div>
-      </li>`
+    
+        // creating element
+      let li = document.createElement('li');
+      let par = document.createElement('p');
+      let div = document.createElement('div');
+      let iCross = document.createElement('i');
+      let iedit = document.createElement('i');
 
-        html+= li;
+      // setting attribute
+      li.setAttribute('class', 'list-task--holder')
+      li.setAttribute('id', cur.id)
+      par.setAttribute('class', 'value--holder')
+      par.textContent = cur.data().list;
+      div.setAttribute('class', 'btn--holder')
+      iCross.setAttribute('class', 'gg-bookmark')
+      iedit.setAttribute('class', 'gg-edit-exposure');
+
+      // // apending element
+      li.appendChild(par)
+      li.appendChild(div)
+      div.appendChild(iCross);
+      div.appendChild(iedit);
+
+      ulContainer.appendChild(li);
+
+      iedit.addEventListener('click', (e)=>{
+        let getVal = document.querySelector('.input--holder input');
+
+        getVal.value = par.textContent;
+
+        document.querySelector('.btn--container .btn--holder').addEventListener('click', ()=>{
+          db.collection('task not completed').doc(`${e.target.parentNode.parentNode.id}`).update({
+            list: getVal.value
+          })
+        })
       })
 
-     let ulContainer = document.querySelector('.item-task--container-un');
+      iCross.addEventListener('click', ()=>{
+        
+      })
 
-     ulContainer.innerHTML = html;
+
+      })
 
      console.log(ulContainer)
-
   }
 
   btnAdd.addEventListener('click', addValue);
 
+  markDoc.addEventListener('click', deleteItem)
 }
 
 UIDBController();
