@@ -158,7 +158,7 @@ const UIDBController = () =>{
       })
 
       iCross.addEventListener('click', ()=>{
-        
+        console.log('hurray')
       })
 
 
