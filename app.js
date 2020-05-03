@@ -105,16 +105,47 @@ const UIDBController = () =>{
 
   const addValue = ()=>{
     if(getVal.value != ''){
-    db.collection('task not completed').add(getVal.value).then(()=>{
+    db.collection('task not completed').add({list: getVal.value}).then(()=>{
       getVal.value = '';
     })
   }}
 
-  db.collection('task not completed').onSnapshot(snapshot => {
-      const changes = snapshot.docs.changes;
 
-      changes.forEach()
+  db.collection('task not completed').onSnapshot(snapshot => {
+      // const changes = snapshot.docs.changes;
+
+      displayItem(snapshot.docs);
+
+      // changes.forEach(change =>{
+      //   if(change.type == 'added'){
+      //     console.log(change.data());
+      //   }
+      // })
   })
+
+  const displayItem = (data) =>{
+
+      let html = '';
+
+      data.map(cur => {
+        let li = ` <li class="list-task--holder" data-id="${cur.id}">
+        <p class="value--holder">${cur.data().list}</p>
+        <div class="btn--holder">
+        <i class="gg-bookmark"></i>
+        <i class="gg-edit-exposure"></i>
+        </div>
+      </li>`
+
+        html+= li;
+      })
+
+     let ulContainer = document.querySelector('.item-task--container-un');
+
+     ulContainer.innerHTML = html;
+
+     console.log(ulContainer)
+
+  }
 
   btnAdd.addEventListener('click', addValue);
 
