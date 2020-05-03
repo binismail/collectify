@@ -108,11 +108,13 @@ const UIDBController = () =>{
     db.collection('task not completed').add(getVal.value).then(()=>{
       getVal.value = '';
     })
-
-    db.collection('task not completed').onSnapshot(snapshot => {
-      viweItems();
-    })
   }}
+
+  db.collection('task not completed').onSnapshot(snapshot => {
+      const changes = snapshot.docs.changes;
+
+      changes.forEach()
+  })
 
   btnAdd.addEventListener('click', addValue);
 
